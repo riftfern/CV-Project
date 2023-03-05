@@ -4,6 +4,7 @@ class PersonalInfo extends Component{
     constructor(props){
         super(props);
         this.state = {
+            info: [],
             firstName: '',
             lastName: '',
             prefName: '',
@@ -12,7 +13,7 @@ class PersonalInfo extends Component{
             address: '',
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        //this.handleSubmit = this.handleSubmit.bind(this);
 
     }
 
@@ -21,26 +22,27 @@ class PersonalInfo extends Component{
     }
 
     render(){
+        const { firstName, lastName, prefName, eMail, phoneNumber, address } = this.state;
         return (
             <form>
                 <h3>Personal Info</h3>
                 <label>
-                    <input type='text' placeholder='First Name' value={this.state.firstName} onChange={(event=>this.handleChange(event, 'firstName'))}/>
+                    <input type='text' placeholder='First Name' value={firstName.text} onChange={(event=>this.handleChange(event, 'firstName'))}/>
                 </label>
                 <label>
-                    <input type='text' placeholder='Last Name' value={this.state.lastName} onChange={(event=>this.handleChange(event, 'lastName'))}/>
+                    <input type='text' placeholder='Last Name' value={lastName.text} onChange={(event=>this.handleChange(event, 'lastName'))}/>
                 </label>
                 <label>
-                    <input type='text' placeholder='Preferred Name' value={this.state.prefName} onChange={(event=>this.handleChange(event, 'prefName'))}/>
+                    <input type='text' placeholder='Preferred Name' value={prefName.text} onChange={(event=>this.handleChange(event, 'prefName'))}/>
                 </label>
                 <label>
-                    <input type='email' placeholder='E-Mail' value={this.state.eMail} onChange={(event=>this.handleChange(event, 'eMail'))}/>
+                    <input type='email' placeholder='E-Mail' value={eMail.text} onChange={(event=>this.handleChange(event, 'eMail'))}/>
                 </label>
                 <label>
-                    <input type='text' placeholder='Phone Number' value={this.state.phoneNumber} onChange={(event=>this.handleChange(event, 'phoneNumber'))}/>
+                    <input type='text' placeholder='Phone Number' value={phoneNumber.text} onChange={(event=>this.handleChange(event, 'phoneNumber'))}/>
                 </label>
                 <label>
-                    <input type='text' placeholder='Address' value={this.state.address} onChange={(event=>this.handleChange(event, 'address'))}/>
+                    <input type='text' placeholder='Address' value={address.text} onChange={(event=>this.handleChange(event, 'address'))}/>
                 </label>
                 <input type='submit' value='Submit'/>
 

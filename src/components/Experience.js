@@ -11,7 +11,7 @@ class Experience extends Component{
             duties: '', 
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        //this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event, field){
@@ -19,23 +19,24 @@ class Experience extends Component{
     }
 
     render(){
+        const { companyName, jobTitle, startDate, endDate, duties } = this.state;
         return (
             <form>
                  <h3>Experience</h3>
                  <label>
-                    <input type='text' placeholder='Company Name' value={this.state.companyName} onChange={(event=>this.handleChange(event, 'companyName'))}/>
+                    <input type='text' placeholder='Company Name' value={companyName.text} onChange={(event=>this.handleChange(event, 'companyName'))}/>
                  </label>
                  <label>
-                    <input type='text' placeholder='Job Title' value={this.state.jobTitle} onChange={(event=>this.handleChange(event, 'jobTitle'))}/>
+                    <input type='text' placeholder='Job Title' value={jobTitle.text} onChange={(event=>this.handleChange(event, 'jobTitle'))}/>
                  </label>
                  <label>
-                    <input type='text' placeholder='Start Date' value={this.state.startDate} onChange={(event=>this.handleChange(event, 'startDate'))}/>
+                    <input type='text' placeholder='Start Date' value={startDate.text} onChange={(event=>this.handleChange(event, 'startDate'))}/>
                  </label>
                  <label>
-                    <input type='text' placeholder='End Date' value={this.state.endDate} onChange={(event=>this.handleChange(event, 'endDate'))}/>
+                    <input type='text' placeholder='End Date' value={endDate.text} onChange={(event=>this.handleChange(event, 'endDate'))}/>
                  </label>
                  <label>
-                    <input type='text' placeholder='Job Duties' value={this.state.duties} onChange={(event=>this.handleChange(event, 'jobDuties'))}/>
+                    <input type='text' placeholder='Job Duties' value={duties.text} onChange={(event=>this.handleChange(event, 'jobDuties'))}/>
                  </label>
                  <input type='submit' value='Submit'/>
             </form>

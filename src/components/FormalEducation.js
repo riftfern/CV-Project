@@ -9,7 +9,7 @@ class FormalEducation extends Component{
             graduationDate: '', 
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        //this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event, field){
@@ -17,17 +17,18 @@ class FormalEducation extends Component{
     }
 
     render(){
+        const { schoolName, degreeName, graduationDate } = this.state;
         return (
             <form>
                  <h3>Formal Education</h3>
                  <label>
-                    <input type='text' placeholder='School Name' value={this.state.schoolName} onChange={(event=>this.handleChange(event, 'projectName'))}/>
+                    <input type='text' placeholder='School Name' value={schoolName.text} onChange={(event=>this.handleChange(event, 'projectName'))}/>
                  </label>
                  <label>
-                    <input type='text' placeholder='Degree Name/Type' value={this.state.degreeName} onChange={(event=>this.handleChange(event, 'projectName'))}/>
+                    <input type='text' placeholder='Degree Name/Type' value={degreeName.text} onChange={(event=>this.handleChange(event, 'projectName'))}/>
                  </label>
                  <label>
-                    <input type='text' placeholder='Graduation Date' value={this.state.graduationDate} onChange={(event=>this.handleChange(event, 'projectName'))}/>
+                    <input type='text' placeholder='Graduation Date' value={graduationDate.text} onChange={(event=>this.handleChange(event, 'projectName'))}/>
                  </label>
                  <input type='submit' value='Submit'/>
             </form>
