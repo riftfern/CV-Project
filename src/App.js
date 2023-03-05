@@ -1,36 +1,34 @@
-import React, { Component } from "react";
-import Header from "./components/Header";
-import PersonalInfo from "./components/PersonalInfo";
-import FormalEducation from "./components/FormalEducation";
-import SelfEducation from "./components/SelfEducation";
-import Experience from "./components/Experience";
-import Projects from "./components/Projects";
-import CvContent from "./components/CvContent";
+import React from "react";
+import Header from "./Header/Header";
+import PersonalInfo from "./PersonalInfo/PersonalInfo";
+import FormalEducation from "./FormalEducation/FormalEducation";
+import SelfEducation from "./SelfEducation/SelfEducation";
+import Experience from "./Experience/Experience";
+import Projects from "./Projects/Projects";
 
-//import uniqid from 'uniqid';
-
-class App extends Component {
-    constructor(){
-        super();
-
-        this.state = {
-
-        }
-    }
-
-    render(){
-        return (
-            <div>
-                <Header />
-                <PersonalInfo />
-                <FormalEducation />
-                <SelfEducation />
-                <Experience />
-                <Projects />
-                <CvContent />
-             </div>
-        )
-    }
+function App() {
+  return (
+    <div className="app">
+      <div className="header-section">
+        <Header />
+      </div>
+      <div className="save-cv-container">{/* save button*/}</div>
+      <div className="personal-info-section">
+        <PersonalInfo />
+      </div>
+      <div className="formal-education-section">
+        <FormalEducation />
+      </div>
+      <div className="self-education-section">
+        <SelfEducation />
+      </div>
+      <div className="experience-section">
+        <Experience />
+      </div>
+      <div className="projects-section">
+        <Projects />
+      </div>
+    </div>
+  );
 }
-
 export default App;
