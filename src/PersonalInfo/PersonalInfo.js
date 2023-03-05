@@ -1,54 +1,64 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class PersonalInfo extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            info: [],
-            firstName: '',
-            lastName: '',
-            prefName: '',
-            eMail: '',
-            phoneNumber: '',
-            address: '',
-        }
-        this.handleChange = this.handleChange.bind(this);
-        //this.handleSubmit = this.handleSubmit.bind(this);
+function PersonalInfo(props) {
+  const [info, setInfo] = useState({
+    userName: "",
+    location: "",
+    phoneNum: "",
+    email: "",
+  });
 
-    }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInfo({ ...info, [name]: value });
+  };
 
-    handleChange(event, field){
-        this.setState({[field]: event.target.value})
-    }
+  const formatNum = (e) => {
+    let phone = e.target.value.split("");
+    phone.splice(0, 0, "(");
+    phone.splice(4, 0, ") ");
+    phone.splice(8, 0, "-");
+    const newPhoneNum = phone.join("");
+    setInfo({ ...info, phoneNum: newPhoneNum });
+  };
 
-    render(){
-        const { firstName, lastName, prefName, eMail, phoneNumber, address } = this.state;
-        return (
-            <form>
-                <h3>Personal Info</h3>
-                <label>
-                    <input type='text' placeholder='First Name' value={firstName.text} onChange={(event=>this.handleChange(event, 'firstName'))}/>
-                </label>
-                <label>
-                    <input type='text' placeholder='Last Name' value={lastName.text} onChange={(event=>this.handleChange(event, 'lastName'))}/>
-                </label>
-                <label>
-                    <input type='text' placeholder='Preferred Name' value={prefName.text} onChange={(event=>this.handleChange(event, 'prefName'))}/>
-                </label>
-                <label>
-                    <input type='email' placeholder='E-Mail' value={eMail.text} onChange={(event=>this.handleChange(event, 'eMail'))}/>
-                </label>
-                <label>
-                    <input type='text' placeholder='Phone Number' value={phoneNumber.text} onChange={(event=>this.handleChange(event, 'phoneNumber'))}/>
-                </label>
-                <label>
-                    <input type='text' placeholder='Address' value={address.text} onChange={(event=>this.handleChange(event, 'address'))}/>
-                </label>
-                <input type='submit' value='Submit'/>
-
-            </form>
-        )
-    }
+  return (
+    <>
+      <input
+        type="text"
+        name="userName"
+        value={info.userName}
+        onChange={handleChange}
+        placeholder="Name"
+        id="userName-input"
+      />
+      <input
+        type="text"
+        name="location"
+        value={info.location}
+        onChange={handleChange}
+        placeholder="Location"
+        id="location-input"
+      />
+      <input
+        type="text"
+        name="phoneNum"
+        value={info.phoneNum}
+        onChange={handleChange}
+        onBlur={formatNum}
+        placeholder="Phone"
+        id="phoneNum-input"
+      />
+      <input
+        type="text"
+        name="email"
+        value={info.email}
+        onChange={handleChange}
+        placeholder="Email"
+        id="email-input"
+      />
+    </>
+  );
 }
 
 export default PersonalInfo;
