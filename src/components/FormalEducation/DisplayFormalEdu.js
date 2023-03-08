@@ -7,7 +7,7 @@ function DeleteBtn(props) {
     <div className="delete-btn-container">
       <button
         className="delete-btn"
-        onClick={props.delteFormalEdu.bind(this, id)}
+        onClick={props.deleteFormalEdu.bind(this, id)}
       >
         X
       </button>
@@ -25,6 +25,7 @@ function DisplayFormalEdu(props) {
       <p className="sub-info">{formalEduHist.studyField}</p>
       <p className="sub-info">{formalEduHist.location}</p>
       <p className="date-info">{formalEduHist.dateAttended}</p>
+      <DeleteBtn id={formalEduHist.id} deleteEdu={props.deleteFormalEdu} />
     </div>
   );
 }

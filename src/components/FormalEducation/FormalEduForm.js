@@ -24,6 +24,8 @@ function FormalEduForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    props.saveFormalEdu(formalEduInfo);
+    resetState();
   };
 
   if (!props.displayForm) return null;
@@ -100,4 +102,4 @@ function FormalEduForm(props) {
   );
 }
 
-export default EduExpForm;
+export default FormalEduForm;
