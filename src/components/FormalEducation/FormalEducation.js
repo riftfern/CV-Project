@@ -1,39 +1,48 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+import SectionHeading from "../Header/Header";
+import OpenModalBtn from "../buttons/OpenModalBtn";
+import EduExpForm from "./FormalEduForm";
+import DisplayFormalEdu from "./DisplayFormalEdu";
 
-class FormalEducation extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            schoolName: '',
-            degreeName: '', 
-            graduationDate: '', 
-        }
-        this.handleChange = this.handleChange.bind(this);
-        //this.handleSubmit = this.handleSubmit.bind(this);
-    }
+function FormalEducation() {
+  const [displayForm, setDisplay] = useState(false);
+  let [edu, addEduInfo] = useState([]);
 
-    handleChange(event, field){
-        this.setState({[field]: event.target.value})
-    }
+  const handleDisplay = () => {
+    setDisplay(!displayForm);
+  };
 
-    render(){
-        const { schoolName, degreeName, graduationDate } = this.state;
-        return (
-            <form>
-                 <h3>Formal Education</h3>
-                 <label>
-                    <input type='text' placeholder='School Name' value={schoolName.text} onChange={(event=>this.handleChange(event, 'projectName'))}/>
-                 </label>
-                 <label>
-                    <input type='text' placeholder='Degree Name/Type' value={degreeName.text} onChange={(event=>this.handleChange(event, 'projectName'))}/>
-                 </label>
-                 <label>
-                    <input type='text' placeholder='Graduation Date' value={graduationDate.text} onChange={(event=>this.handleChange(event, 'projectName'))}/>
-                 </label>
-                 <input type='submit' value='Submit'/>
-            </form>
-        )
-    }
+  const saveEdu = (eduInfo) => {
+    const newEduInfo = [...edu, eduInfo];
+    addEduInfo(newEduInfo);
+    handleDisplay();
+  };
+
+  const deleteEdu = (id) => {
+    const newEduInfo = [...edu];
+    newEduInfo.splice(id, 1);
+    addEduInfo(newEduInfo);
+  };
+
+  return (
+    <>
+      <SectionHeading title="Formal Education" />
+
+      {edu.map((eduHist) => (
+        <DisplayFormalEdu
+          eduHist={eduHist}
+          key={eduHist.id}
+          deleteEdu={deleteEdu}
+        />
+      ))}
+      <EduExpForm
+        displayForm={displayForm}
+        handleDisplay={handleDisplay}
+        saveEdu={saveEdu}
+      />
+      <OpenModalBtn title="Formal Education" handleDisplay={handleDisplay} />
+    </>
+  );
 }
 
 export default FormalEducation;
