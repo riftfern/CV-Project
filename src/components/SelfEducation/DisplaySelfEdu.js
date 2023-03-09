@@ -20,9 +20,9 @@ function DisplaySelfEdu(props) {
 
   return (
     <div className="render-info">
-      <h4 className="main-title">{selfEduHist.bootCampName}</h4>
+      <h4 className="main-title">{selfEduHist.bootCamp}</h4>
+      <p className="sub-info">{selfEduHist.dateAttended}</p>
       <p className="sub-info">{selfEduHist.studyField}</p>
-      <p className="sub-info">{selfEduHist.startDate}</p>
       <DeleteBtn id={selfEduHist.id} deleteEdu={props.deleteFormalEdu} />
     </div>
   );
