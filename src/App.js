@@ -1,10 +1,11 @@
 import React from "react";
-import Header from "./Header/Header";
-import PersonalInfo from "./PersonalInfo/PersonalInfo";
-import FormalEducation from "./FormalEducation/FormalEducation";
-import SelfEducation from "./SelfEducation/SelfEducation";
-import Experience from "./Experience/Experience";
-import Projects from "./Projects/Projects";
+import Header from "./components/Header/Header";
+import PersonalInfo from "./components/PersonalInfo/PersonalInfo";
+import FormalEducation from "./components/FormalEducation/FormalEducation";
+import SelfEducation from "./components/SelfEducation/SelfEducation";
+import Experience from "./components/Experience/Experience";
+import Projects from "./components/Projects/Projects";
+import SavePagebtn from "./components/buttons/SavePageBtn";
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
       <div className="header-section">
         <Header />
       </div>
-      <div className="save-cv-container">{/* save button*/}</div>
+      <div className="save-cv-container">
+        <SavePagebtn />
+      </div>
       <div className="personal-info-section">
         <PersonalInfo />
       </div>
