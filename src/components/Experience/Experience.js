@@ -1,72 +1,46 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+import SectionHeading from "../Header/Header";
+import OpenModalBtn from "../buttons/OpenModalBtn";
+import ExpForm from "./ExpForm";
+import DisplayExp from "./DisplayExp";
 
-class Experience extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      companyName: "",
-      jobTitle: "",
-      startDate: "",
-      endDate: "",
-      duties: "",
-    };
-    this.handleChange = this.handleChange.bind(this);
-    //this.handleSubmit = this.handleSubmit.bind(this);
-  }
+function Experience() {
+  const [displayForm, setDisplay] = useState(false);
+  let [workExp, addWorkExp] = useState([]);
 
-  handleChange(event, field) {
-    this.setState({ [field]: event.target.value });
-  }
+  const handleDisplay = () => {
+    setDisplay(!displayForm);
+  };
 
-  render() {
-    const { companyName, jobTitle, startDate, endDate, duties } = this.state;
-    return (
-      <form>
-        <h3>Experience</h3>
-        <label>
-          <input
-            type="text"
-            placeholder="Company Name"
-            value={companyName.text}
-            onChange={(event) => this.handleChange(event, "companyName")}
-          />
-        </label>
-        <label>
-          <input
-            type="text"
-            placeholder="Job Title"
-            value={jobTitle.text}
-            onChange={(event) => this.handleChange(event, "jobTitle")}
-          />
-        </label>
-        <label>
-          <input
-            type="text"
-            placeholder="Start Date"
-            value={startDate.text}
-            onChange={(event) => this.handleChange(event, "startDate")}
-          />
-        </label>
-        <label>
-          <input
-            type="text"
-            placeholder="End Date"
-            value={endDate.text}
-            onChange={(event) => this.handleChange(event, "endDate")}
-          />
-        </label>
-        <label>
-          <input
-            type="text"
-            placeholder="Job Duties"
-            value={duties.text}
-            onChange={(event) => this.handleChange(event, "jobDuties")}
-          />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    );
-  }
+  const saveWork = (workInfo) => {
+    const newWorkExp = [...workExp, workInfo];
+    addWorkExp(newWorkExp);
+    handleDisplay();
+  };
+
+  const deleteHist = (id) => {
+    const newWorkExp = [...workExp];
+    newWorkExp.splice(id, 1);
+    addWorkExp(newWorkExp);
+  };
+  return (
+    <>
+      <SectionHeading title="Work Experience" />
+      {workExp.map((workHist) => (
+        <DisplayExp
+          workHist={workHist}
+          key={workHist.id}
+          deleteHist={deleteHist}
+        />
+      ))}
+      <ExpForm
+        displayForm={displayForm}
+        handleDisplay={handleDisplay}
+        saveWork={saveWork}
+      />
+      <OpenModalBtn title="Work Experience" handleDisplay={handleDisplay} />
+    </>
+  );
 }
 
 export default Experience;
