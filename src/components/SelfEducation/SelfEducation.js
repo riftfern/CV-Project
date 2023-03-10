@@ -1,54 +1,48 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+import SectionHeading from "../Header/Header";
+import OpenModalBtn from "../buttons/OpenModalBtn";
+import SelfEduForm from "./SelfEduForm";
+import DisplaySelfEdu from "../SelfEducation/DisplaySelfEdu";
 
-class SelfEducation extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      bootCampName: "",
-      courseOfStudy: "",
-      startDate: "",
-    };
-    this.handleChange = this.handleChange.bind(this);
-    //this.handleSubmit = this.handleSubmit.bind(this);
-  }
+function SelfEducation() {
+  const [displayForm, setDisplay] = useState(false);
+  let [edu, addEduInfo] = useState([]);
 
-  handleChange(event, field) {
-    this.setState({ [field]: event.target.value });
-  }
+  const handleDisplay = () => {
+    setDisplay(!displayForm);
+  };
 
-  render() {
-    const { bootCampName, courseOfStudy, startDate } = this.state;
-    return (
-      <form>
-        <h3>Self Education</h3>
-        <label>
-          <input
-            type="text"
-            placeholder="Boot-Camp/Program Name"
-            value={bootCampName.text}
-            onChange={(event) => this.handleChange(event, "bootCampName")}
-          />
-        </label>
-        <label>
-          <input
-            type="text"
-            placeholder="Course Of Study"
-            value={courseOfStudy.text}
-            onChange={(event) => this.handleChange(event, "courseOfStudy")}
-          />
-        </label>
-        <label>
-          <input
-            type="text"
-            placeholder="Start Date"
-            value={startDate.text}
-            onChange={(event) => this.handleChange(event, "startDate")}
-          />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    );
-  }
+  const saveEdu = (eduInfo) => {
+    const newEduInfo = [...edu, eduInfo];
+    addEduInfo(newEduInfo);
+    handleDisplay();
+  };
+
+  const deleteEdu = (id) => {
+    const newEduInfo = [...edu];
+    newEduInfo.splice(id, 1);
+    addEduInfo(newEduInfo);
+  };
+
+  return (
+    <>
+      <SectionHeading title="Self Education" />
+
+      {edu.map((eduHist) => (
+        <DisplaySelfEdu
+          eduHist={eduHist}
+          key={eduHist.id}
+          deleteEde={deleteEdu}
+        />
+      ))}
+      <SelfEduForm
+        displayForm={displayForm}
+        handleDisplay={handleDisplay}
+        saveEdu={saveEdu}
+      />
+      <OpenModalBtn title="Self Education" handleDisplay={handleDisplay} />
+    </>
+  );
 }
 
 export default SelfEducation;
