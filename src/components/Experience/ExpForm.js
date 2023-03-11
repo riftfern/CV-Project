@@ -64,18 +64,6 @@ function ExpForm(props) {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="location">
-            Location <span>(e.g. Los Angeles, CA)</span>
-          </label>
-          <input
-            type="text"
-            name="location"
-            id="workLocation-input"
-            value={workInfo.location}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
           <label htmlFor="description">Description</label>
           <textarea
             name="description"
