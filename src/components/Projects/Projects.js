@@ -1,56 +1,47 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+import SectionHeading from "../Header/Header";
+import OpenModalBtn from "../buttons/OpenModalBtn";
+import ProjectForm from "./ProjectsForm";
+import DisplayProjects from "./DisplayProjects";
 
-class Projects extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      projectName: "",
-      projectDesc: "",
-      projectTech: "",
-    };
-    this.handleChange = this.handleChange.bind(this);
-    //this.handleSubmit = this.handleSubmit.bind(this);
-  }
+function Projects() {
+  const [displayForm, setDisplay] = useState(false);
+  let [projects, addProject] = useState([]);
 
-  handleChange(event) {
-    //const target = event.target;
-    //const value =
-    //this.setState({[field]: event.target.value})
-  }
+  const handleDisplay = () => {
+    setDisplay(!displayForm);
+  };
 
-  render() {
-    const { projectName, projectDesc, projectTech } = this.state;
-    return (
-      <form>
-        <h3>Projects</h3>
-        <label>
-          <input
-            type="text"
-            placeholder="Project Name"
-            value={projectName.text}
-            onChange={(event) => this.handleChange(event, "projectName")}
-          />
-        </label>
-        <label>
-          <input
-            type="text"
-            placeholder="Description"
-            value={projectDesc.text}
-            onChange={(event) => this.handleChange(event, "projectDesc")}
-          />
-        </label>
-        <label>
-          <input
-            type="text"
-            placeholder="Technologies Used"
-            value={projectTech.text}
-            onChange={(event) => this.handleChange(event, "projectTech")}
-          />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    );
-  }
+  const saveWork = (projectInfo) => {
+    const newProject = [...projects, projectInfo];
+    addProject(newProject);
+    handleDisplay();
+  };
+
+  const deleteHist = (id) => {
+    const newProject = [...projects];
+    newProject.splice(id, 1);
+    addProject(newProject);
+  };
+
+  return (
+    <>
+      <SectionHeading title="Projects" />
+      {projects.map((project) => (
+        <DisplayProjects
+          project={project}
+          key={project.id}
+          deleteHist={deleteHist}
+        />
+      ))}
+      <ProjectForm
+        displayForm={displayForm}
+        handleDisplay={handleDisplay}
+        saveWork={saveWork}
+      />
+      <OpenModalBtn title="Projects" handleDisplay={handleDisplay} />
+    </>
+  );
 }
 
 export default Projects;
