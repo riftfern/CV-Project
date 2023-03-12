@@ -33,8 +33,10 @@ export default function DisplayProjects(props) {
       <div className="formatted-list">
         <FormatDesc desc={projects.desc} />
       </div>
-      <p className="sub-info">{projects.tech}</p>
-      <DeleteBtn id={id} deleteProjects={props.deleteProjects} />
+      <div className="formatted-list">
+        <FormatDesc desc={projects.tech} />
+      </div>
+      <DeleteBtn id={id} deleteHist={props.deleteHist} />
     </div>
   );
 }
