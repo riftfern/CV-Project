@@ -24,19 +24,21 @@ function DeleteBtn(props) {
   );
 }
 
-export default function DisplayProjects(props) {
-  const { projects, id } = props;
+function DisplayProjects(props) {
+  const { project, id } = props;
 
   return (
     <div className="render-info">
-      <h4 className="main-title">{projects.title}</h4>
+      <h4 className="main-title">{project.title}</h4>
       <div className="formatted-list">
-        <FormatDesc desc={projects.desc} />
+        <FormatDesc desc={project.desc} />
       </div>
       <div className="formatted-list">
-        <FormatDesc desc={projects.tech} />
+        <FormatDesc desc={project.tech} />
       </div>
       <DeleteBtn id={id} deleteHist={props.deleteHist} />
     </div>
   );
 }
+
+export default DisplayProjects;

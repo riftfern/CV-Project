@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SectionHeading from "../Header/Header";
 import OpenModalBtn from "../buttons/OpenModalBtn";
-import ProjectForm from "./ProjectsForm";
+import ProjectsForm from "./ProjectsForm";
 import DisplayProjects from "./DisplayProjects";
 
 function Projects() {
@@ -34,7 +34,7 @@ function Projects() {
           deleteHist={deleteHist}
         />
       ))}
-      <ProjectForm
+      <ProjectsForm
         displayForm={displayForm}
         handleDisplay={handleDisplay}
         saveWork={saveWork}

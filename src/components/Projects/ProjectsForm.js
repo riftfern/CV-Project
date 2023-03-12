@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import uniqid from "uniqid";
 
-export default function ProjectForm(props) {
+function ProjectsForm(props) {
   const initialState = {
     title: "",
     desc: "",
@@ -31,19 +31,19 @@ export default function ProjectForm(props) {
     <div className="modal-container">
       <form className="modal-content" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="projectTitle">Project Title</label>
+          <label htmlFor="title">Project Title</label>
           <input
             type="text"
-            name="projectTitle"
-            id="project-input"
+            name="title"
+            id="project-title"
             value={projectInfo.title}
             onChange={handleChange}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="description">Description</label>
+          <label htmlFor="desc">Description</label>
           <textarea
-            name="description"
+            name="desc"
             id="project-desc"
             placeholder="Tasks will re-format into bulletpoints on save"
             value={projectInfo.desc}
@@ -70,3 +70,5 @@ export default function ProjectForm(props) {
     </div>
   );
 }
+
+export default ProjectsForm;
