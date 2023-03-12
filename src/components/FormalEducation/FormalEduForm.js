@@ -24,7 +24,7 @@ function FormalEduForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.saveFormalEdu(formalEduInfo);
+    props.saveEdu(formalEduInfo);
     resetState();
   };
 

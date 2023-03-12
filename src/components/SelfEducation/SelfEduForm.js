@@ -9,7 +9,7 @@ function SelfEduForm(props) {
     id: uniqid(),
   };
 
-  const [selfEduInfo, setInfo] = useState(initialState);
+  const [eduInfo, setInfo] = useState(initialState);
 
   const resetState = () => {
     setInfo(initialState);
@@ -22,7 +22,7 @@ function SelfEduForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.saveFormalEdu(selfEduInfo);
+    props.saveEdu(eduInfo);
     resetState();
   };
 
@@ -37,7 +37,7 @@ function SelfEduForm(props) {
             type="text"
             name="bootCamp"
             id="bootCampInput"
-            value={selfEduInfo.school}
+            value={eduInfo.bootCamp}
           />
         </div>
         <div className="form-group">
@@ -49,7 +49,7 @@ function SelfEduForm(props) {
             type="text"
             name="dateAttended"
             id="dateAttended-input"
-            value={selfEduInfo.dateAttended}
+            value={eduInfo.dateAttended}
           />
         </div>
         <div className="form-group">
@@ -59,7 +59,7 @@ function SelfEduForm(props) {
             type="text"
             name="studyField"
             id="studyField-input"
-            value={selfEduInfo.studyField}
+            value={eduInfo.studyField}
           />
         </div>
         <div className="modal-action-btns">

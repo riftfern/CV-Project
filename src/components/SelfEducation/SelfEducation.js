@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SectionHeading from "../Header/Header";
 import OpenModalBtn from "../buttons/OpenModalBtn";
 import SelfEduForm from "./SelfEduForm";
-import DisplaySelfEdu from "../SelfEducation/DisplaySelfEdu";
+import DisplaySelfEdu from "./DisplaySelfEdu";
 
 function SelfEducation() {
   const [displayForm, setDisplay] = useState(false);
@@ -32,7 +32,7 @@ function SelfEducation() {
         <DisplaySelfEdu
           eduHist={eduHist}
           key={eduHist.id}
-          deleteEde={deleteEdu}
+          deleteEdu={deleteEdu}
         />
       ))}
       <SelfEduForm

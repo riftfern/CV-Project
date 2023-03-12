@@ -5,10 +5,7 @@ function DeleteBtn(props) {
 
   return (
     <div className="delete-btn-container">
-      <button
-        className="delete-btn"
-        onClick={props.deleteFormalEdu.bind(this, id)}
-      >
+      <button className="delete-btn" onClick={props.deleteEdu.bind(this, id)}>
         X
       </button>
     </div>
@@ -16,16 +13,16 @@ function DeleteBtn(props) {
 }
 
 function DisplayFormalEdu(props) {
-  const { formalEduHist } = props;
+  const { eduHist } = props;
 
   return (
     <div className="render-info">
-      <h4 className="main-title">{formalEduHist.school}</h4>
-      <p className="sub-info">{formalEduHist.degree}</p>
-      <p className="sub-info">{formalEduHist.studyField}</p>
-      <p className="sub-info">{formalEduHist.location}</p>
-      <p className="date-info">{formalEduHist.dateAttended}</p>
-      <DeleteBtn id={formalEduHist.id} deleteEdu={props.deleteFormalEdu} />
+      <h4 className="main-title">{eduHist.school}</h4>
+      <p className="sub-info">{eduHist.degree}</p>
+      <p className="sub-info">{eduHist.studyField}</p>
+      <p className="sub-info">{eduHist.location}</p>
+      <p className="date-info">{eduHist.dateAttended}</p>
+      <DeleteBtn id={eduHist.id} deleteEdu={props.deleteEdu} />
     </div>
   );
 }
