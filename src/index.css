@@ -101,6 +101,9 @@ input:not([type="submit"]):hover {
 
 .modal-content input:not([type="submit"]),
 #job-desc,
+#project-input,
+#project-desc,
+#project-tech,
 #degree-input {
   height: 35px;
   border-radius: 5px;
@@ -136,7 +139,7 @@ span {
   width: 100%;
 }
 
-.save-info-btn {
+.save-page-btn {
   color: red;
   width: 80px;
   height: 40px;
@@ -151,7 +154,7 @@ span {
   cursor: pointer;
 }
 
-.save-info-btn:hover {
+.save-page-btn:hover {
   color: #1b8dff;
 }
 
@@ -192,7 +195,8 @@ span {
   font-size: 14px;
 }
 
-.formatted-list {
+.formatted-list,
+.project-desc-list {
   padding-left: 20px;
   font-size: 13px;
 }
@@ -252,7 +256,8 @@ span {
 }
 
 .work-section,
-.education-section {
+.education-section,
+.project-section {
   margin-bottom: 50px;
 }
 
