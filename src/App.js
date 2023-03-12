@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "./components/Header/Header";
 import PersonalInfo from "./components/PersonalInfo/PersonalInfo";
 import FormalEducation from "./components/FormalEducation/FormalEducation";
 import SelfEducation from "./components/SelfEducation/SelfEducation";
@@ -10,9 +9,6 @@ import SavePagebtn from "./components/buttons/SavePageBtn";
 function App() {
   return (
     <div className="app">
-      <div className="header-section">
-        <Header />
-      </div>
       <div className="save-cv-container">
         <SavePagebtn />
       </div>
