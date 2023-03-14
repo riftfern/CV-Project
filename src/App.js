@@ -12,7 +12,7 @@ function App() {
       <div className="save-cv-container">
         <SavePagebtn />
       </div>
-      <div className="personal-info-section">
+      <div className="personal-info-section ">
         <PersonalInfo />
       </div>
       <div className="formal-education-section">
